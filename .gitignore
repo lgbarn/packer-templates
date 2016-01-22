@@ -6,5 +6,6 @@
 *.box
 # ignore test directories
 test/
+*/packer_cache/*
 
 
