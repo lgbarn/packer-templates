@@ -59,11 +59,19 @@
         "<wait10><wait10><wait10>","<wait10><wait10><wait10>"
       ],
 
-     "hard_drive_interface": "sata",
+     "hard_drive_interface": "ide",
      "vboxmanage": [
         [ "modifyvm", "{{.Name}}", "--memory", "512" ],
-        [ "modifyvm", "{{.Name}}", "--cpus", "1" ]
-
+        [ "modifyvm", "{{.Name}}", "--cpus", "1" ],
+        [ "createhd", "--format", "VMDK", "--filename", "disk1.vmdk", "--size", "5124" ],
+        [ "createhd", "--format", "VMDK", "--filename", "disk2.vmdk", "--size", "5124" ],
+        [ "createhd", "--format", "VMDK", "--filename", "disk3.vmdk", "--size", "5124" ],
+        [ "createhd", "--format", "VMDK", "--filename", "disk4.vmdk", "--size", "5124" ],
+        [ "storagectl", "{{.Name}}", "--name", "SATA", "--add", "sata", "--controller", "IntelAhci" ],
+        [ "storageattach", "{{.Name}}", "--storagectl", "SATA", "--port", "1", "--type", "hdd", "--medium", "disk1.vmdk" ],
+        [ "storageattach", "{{.Name}}", "--storagectl", "SATA", "--port", "2", "--type", "hdd", "--medium", "disk2.vmdk" ],
+        [ "storageattach", "{{.Name}}", "--storagectl", "SATA", "--port", "3", "--type", "hdd", "--medium", "disk3.vmdk" ],
+        [ "storageattach", "{{.Name}}", "--storagectl", "SATA", "--port", "4", "--type", "hdd", "--medium", "disk4.vmdk" ]
       ]
     }
   ],
@@ -80,7 +88,7 @@
       "metadata": {
         "provider": "virtualbox",
         "description": "[CentOS](http://centos.org) v6.7 x86_64",
-        "version": "1.0.0"
+        "version": "2.0.0"
       }
     }]
   ]
