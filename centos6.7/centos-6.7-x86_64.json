@@ -1,7 +1,7 @@
 {
   "description": "Build base CentOS 6 x86_64",
   "push": {
-    "name": "lgbarn/cent67",
+    "name": "lgbarn/centos-6.7-x86_64-extradisks-nocm",
     "vcs": true
   },
   "variables": {
@@ -83,7 +83,7 @@
     {
       "type": "atlas",
       "only": ["virtualbox-iso"],
-      "artifact": "lgbarn/cento67",
+      "artifact": "lgbarn/centos-6.7-x86_64-extradisks-nocm",
       "artifact_type": "vagrant.box",
       "metadata": {
         "provider": "virtualbox",
